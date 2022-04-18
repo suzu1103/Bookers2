@@ -5,26 +5,47 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-      <% if user_signed_in? %>
+      
+      <!--自分の一覧-->
         <li>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          <%= link_to "Home", books_path %>
+        </li>
+        
+      <% if user_signed_in? %>
+      
+        <li>
+          <%= link_to "Users", users_path %>
+        </li>
+        
+        <!--みんなの一覧-->
+        <li>
+          <%= link_to "Books", books_path %>
+        </li>
+        <li>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
         </li>
       <% else %>
+
         <li>
-          <%= link_to "新規登録", new_user_registration_path %>
+          <%= link_to "About", about_path %>
         </li>
         <li>
-          <%= link_to "ログイン", new_user_session_path %>
+          <%= link_to "Sign up", new_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to "Log in", new_user_session_path %>
         </li>
       <% end %>
     </header>
+    
     <%= yield %>
   </body>
 </html>
