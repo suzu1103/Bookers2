@@ -5,49 +5,48 @@
     <div class ="col-md-3">
       <h2>User info</h2>
 
-        <!--%= image_tag @user.get_profile_image(100,100)  %>-->
-        <!--% if user_sign_in? %>-->
-        <%= image_tag current_user.get_profile_image(100,100) %>
-          <th><%= current_user.name %></th><br>
-          <th><%= current_user.introduction %></th>
+        <%= image_tag current_user.get_profile_image(100,100) %><br>
+          <th>name</th><th><%= current_user.name %></th><br>
+          <th>introduction</th><th><%= current_user.introduction %></th><br>
         <%= link_to "User Edit", edit_user_path(current_user), class:"text-dark" %>
-        <!--% end %>-->
 
 
-      <!--<table class="table">-->
-      <!--  <tbody>-->
-      <!--    <tr>-->
-      <!--  	  <th>name</th>-->
-      <!--  	  <th>%= f.string_field :name autofocus: true, id:"inputName" %></th>-->
-      <!--    </tr>-->
-      <!--    <tr>-->
-      <!--  	  <th>introduction</th>-->
-      <!--  	  <th>%= f.text_field :introduction autofocus: true, id:"inputIntroduction" %></th>-->
-      <!--    </tr>-->
-      <!--  </tbody>-->
-      <!--</table>-->
-
-
-
-
-
-
-
+  
       <h2>New book</h2>
 
-      <!--<form action="/books" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="cbL3i-kgzBd__ROr3ZU8Q5OY0tdgp6qwTfgiyhw4NSzqm5MhUbMAYJH2vdN9Z9OSa2OkhNNNMMdlBOP2jNBBSg" autocomplete="off">-->
-        <div class="form-group">
-          <label for="book_title">Title</label>
-          <input class="form-control book_title" type="text" name="book[title]" id="book_title">
+    
+      <div id="error_explanation">
+        <% if @book.errors.any? %>
+          <h2><%= @book.errors.count %>errors prohibited this book from being saved:</h2>
+    
+          <ul>
+            <% @book.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+  
+      <!--form_with-->
+      <%= form_with model: Book.new do |f| %>
+        <div class="field">
+          <label for="book_title">Title</label><br>
+          <input class="book_title" type="text" name="book[title]" id="book_title">
         </div>
-        <div class="form-group">
-          <label for="book_opinion">Opinion</label>
-          <textarea class="form-control book_body" name="book[body]" id="book_body"></textarea>
+      
+        <div class="field">
+          <label for="book_body">Opinion</label><br>
+          <textarea class="book_body" name="book[body]" id="book_body"></textarea>
         </div>
-        <div class="form-group">
+      
+        <div class="actions">
           <input type="submit" name="commit" value="Create Book" class="btn btn-success" data-disable-with="Create Book">
+    
         </div>
-      </form>
+      
+      <% end %>
+    
+    
 
     </div>
 
