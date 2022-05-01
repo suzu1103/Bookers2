@@ -70,15 +70,6 @@
     <div class ="col-md-8 offset-md-1">
         <h2>Book detail</h2>
         <table class="table">
-            <thead>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col">Title</th>
-                <th scope="col">Opinion</th>
-                <th></th>
-              </tr>
-            </thead>
-
 
 <!--ログイン中のユーザーの場合はEditとDestroy-->
             <tbody>
@@ -92,8 +83,8 @@
                   <td><%= @book.body %></td>
                   <td>
                     <% if @book.user == current_user %>
-                      <%= link_to "Edit", edit_books_path, class:"btn btn-danger" %>
-                      <%= link_to "Destroy", books_path, class:"btn btn-danger", method: :delete, "data-confirm" => "本当に消しますか?" %>
+                      <td><%= link_to "Edit", edit_book_path(@user), class:"btn btn-success" %></td>
+                      <td><%= link_to "Destroy", book_path(@book), class: "btn btn-sm btn-danger destroy_book_#{@book.id}", method: :delete, data: {confirm: "本当に消しますか?"} %></td>
                     <% end %>
                   </td>
 
