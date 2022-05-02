@@ -1,71 +1,7 @@
 <div class ="container">
   <div class ="row">
 
-
-    <div class ="col-md-3">
-    <h2>User info</h2>
-    <!--本の投稿者の情報を表示-->
-
-        <%= image_tag @book.user.get_profile_image(100,100) %><br>
-        <table class="table">
-          <tr>
-            <th scope="col">name</th><th><%= @book.user.name %></th>
-          </tr>
-          <tr>
-            <th scope="col">introduction</th><th><%= @book.user.introduction %></th>
-          </tr>
-        </table>
-
-        <%= link_to(user_path(current_user), class: "nav-link text-dark, btn btn-lg btn-block btn-outline-secondary") do %>
-          <span><i class="fas fa-user-cog"></i></span>
-        <% end %>
-
-
-
-
-      <h2>New book</h2>
-
-
-      <div id="error_explanation">
-        <% if @book.errors.any? %>
-          <h2><%= @book.errors.count %>errors prohibited this book from being saved:</h2>
-
-          <ul>
-            <% @book.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        <% end %>
-      </div>
-
-      <%= form_with model: Book.new do |f| %>
-        <div class="field">
-          <label for="book_title">Title</label><br>
-          <input class="book_title" type="text" name="book[title]" id="book_title">
-        </div>
-
-        <div class="field">
-          <label for="book_body">Opinion</label><br>
-          <textarea class="book_body" name="book[body]" id="book_body"></textarea>
-        </div>
-
-        <div class="actions">
-          <input type="submit" name="commit" value="Create Book" class="btn btn-success" data-disable-with="Create Book">
-
-        </div>
-
-      <% end %>
-
-    </div>
-
-
-
-
-
-
-
-
-
+    <%= render 'booksuser', books: @books %>
 
     <div class ="col-md-8 offset-md-1">
         <h2>Book detail</h2>
