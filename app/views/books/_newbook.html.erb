@@ -1,0 +1,21 @@
+<div class ="mt-3">
+  <h2>New book</h2>
+
+      <%= form_with model: book_new do |f| %>
+        <div class="field">
+          <label for="book_title">Title</label><br>
+          <input class="book_title" type="text" name="book[title]" id="book_title">
+        </div>
+
+        <div class="field">
+          <label for="book_body">Opinion</label><br>
+          <textarea class="book_body" name="book[body]" id="book_body"></textarea>
+        </div>
+
+        <div class="actions">
+          <input type="submit" name="commit" value="Create Book" class="btn btn-success" data-disable-with="Create Book">
+
+        </div>
+
+      <% end %>
+</div>

@@ -1,0 +1,20 @@
+<div class ="col-md-3">
+  <h2>User info</h2>
+    <!--本の投稿者の情報を表示-->
+    <%= image_tag user.get_profile_image(100,100) %><br>
+      <table class="table">
+        <tr>
+          <th scope="col">name</th><th><%= user.name %></th>
+        </tr>
+        <tr>
+          <th scope="col">introduction</th><th><%= user.introduction %></th>
+        </tr>
+      </table>
+
+        <%= link_to edit_user_path(user), class: "nav-link text-dark, btn btn-lg btn-block btn-outline-secondary" do %>
+          <span><i class="fas fa-user-cog"></i></span>
+        <% end %>
+
+
+      <%= render 'books/newbook', book_new: @book_new %>
+</div>
