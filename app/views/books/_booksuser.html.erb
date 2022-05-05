@@ -11,15 +11,10 @@
         </tr>
       </table>
 
-      <% if user == current_user %>
-        <%= link_to(edit_user_path(current_user), class: "nav-link text-dark, btn btn-lg btn-block btn-outline-secondary") do %>
+        <%= link_to edit_user_path(user), class: "nav-link text-dark, btn btn-lg btn-block btn-outline-secondary" do %>
           <span><i class="fas fa-user-cog"></i></span>
         <% end %>
-      <% else %>
-        <%= link_to(user_path(current_user), class: "nav-link text-dark, btn btn-lg btn-block btn-outline-secondary") do %>
-          <span><i class="fas fa-user-cog"></i></span>
-        <% end %>
-      <% end %>
+
 
       <%= render 'books/newbook', book_new: @book_new %>
 </div>
