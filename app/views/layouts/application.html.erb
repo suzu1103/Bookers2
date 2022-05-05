@@ -28,7 +28,6 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
 
-
               <% if user_signed_in? %>
                 <li>
                   <%= link_to(user_path(current_user.id), class:"nav-link text-light") do %>
@@ -46,8 +45,6 @@
                   <% end %>
                 </li>
                 <li>
-                  <!--%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>-->
-
                   <%= link_to(destroy_user_session_path, method: :delete, class: "nav-link text-light") do %>
                     <li><i class="fas fa-sign-out-alt"></i><span>Log out</span></li>
                   <% end %>
@@ -55,17 +52,26 @@
 
               <% else %>
                 <li>
-                  <%= link_to "Home", root_path, class: 'nav-link text-light' %>
+                  <%= link_to(root_path, class: 'nav-link text-light') do %>
+                    <li><i class="fas fa-home"></i><span>Home</span></li>
+                  <% end %>
                 </li>
                 <li>
-                  <%= link_to "About", about_path, class: 'nav-link text-light' %>
+                  <%= link_to(about_path, class: 'nav-link text-light') do %>
+                    <li><i class="fas fa-link"></i><span>About</span></li>
+                  <% end %>
                 </li>
                 <li>
-                  <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-light' %>
+                  <%= link_to(new_user_registration_path, class: 'nav-link text-light') do %>
+                    <li><i class="fas fa-user-plus"></i><span>Sign up</span></li>
+                  <% end %>
                 </li>
                 <li>
-                  <%= link_to "Log in", new_user_session_path, class: 'nav-link text-light' %>
+                  <%= link_to(new_user_session_path, class: 'nav-link text-light') do %>
+                    <li><i class="fas fa-sign-in-alt"></i><span>Log in</span></li>
+                  <% end %>
                 </li>
+
               <% end %>
             </ul>
           </div>
@@ -75,7 +81,7 @@
     </header>
 
     <main>
-    <%= yield %>
+      <%= yield %>
     </main>
 
 <footer>

@@ -1,7 +1,9 @@
+<p id="notice"><%= flash[:notice] %></p>
+
 <div class ="container">
   <div class ="row">
 
-    <%= render 'booksuser', user: @user %>
+    <%= render 'booksuser', user: @user, book: @book %>
 
 
     <div class ="col-md-8 offset-md-1">
@@ -14,13 +16,13 @@
                 <tr>
                   <td>
                     <%= image_tag @book.user.get_profile_image(100,100) %><br>
-                    <%= link_to @book.user.name, user_path(@book.id) %>
+                    <%= link_to @book.user.name, user_path(@user.id) %>
                   </td>
                   <td><%= link_to @book.title, book_path(@book.id) %></td>
                   <td><%= @book.body %></td>
                   <td>
                     <% if @book.user == current_user %>
-                      <td><%= link_to "Edit", edit_book_path(@book.id), class:"btn btn-success" %></td>
+                      <td><%= link_to "Edit", edit_book_path(@book.id), class:"btn btn-sm btn-success" %></td>
                       <td><%= link_to "Destroy", book_path(@book), class: "btn btn-sm btn-danger destroy_book_#{@book.id}", method: :delete, data: {confirm: "本当に消しますか?"} %></td>
                     <% end %>
                   </td>
